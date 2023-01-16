@@ -1,4 +1,4 @@
-import Todo from "../types/todoTypes"
+import { Todo } from "../types/todoTypes"
 
 const initialState: Todo[] = [];
 
