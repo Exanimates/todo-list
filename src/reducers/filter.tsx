@@ -1,4 +1,4 @@
-const todos = (state = "SHOW_ALL", action: { type: string, filter: boolean }) => {
+const filter = (state = "SHOW_ALL", action: { type: string, filter: boolean }) => {
 	switch (action.type) {
         case 'SET_VISIBILITY_FILTER':
           return action.filter
@@ -7,4 +7,4 @@ const todos = (state = "SHOW_ALL", action: { type: string, filter: boolean }) =>
       }
 }
 
-export default todos;
+export default filter;
