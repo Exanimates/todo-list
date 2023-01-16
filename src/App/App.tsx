@@ -20,8 +20,6 @@ const App: React.FC<AppPropType> = ({ todos, counter, currentFilter, onAddTodo, 
   const [validationMessage, setValidationMessage] = useState("");
 
   const addTodo = () => {
-    debugger;
-
     if (inputValue.length === 0) {
       setValidationMessage("Ошибка. Поле обязательно для заполнения"); 
       return 

@@ -5,9 +5,6 @@ import { Provider } from "react-redux";
 import rootReducer from "./reducers/index";
 import { createStore } from "redux";
 
-
-import "bootstrap/dist/css/bootstrap.min.css";
-
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={createStore(rootReducer)}>
