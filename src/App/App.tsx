@@ -54,8 +54,8 @@ const App: React.FC<AppPropType> = ({ todos, counter, currentFilter, onAddTodo, 
       <div className="app">
         <div className="app__input">
           <div className="app__input-field">
-            <input className="text-field__input" type={"text"} value= { inputValue } onChange={ handleInputChange }></input>
-            <button className="custom-btn btn-4" onClick={() => addTodo()}>Добавить задачу</button>
+            <input placeholder="Введите название задачи" className="text-field__input" type={"text"} value= { inputValue } onChange={ handleInputChange }></input>
+            <button className="custom-btn btn-4 add_button" onClick={() => addTodo()}>Добавить задачу</button>
           </div>
           <div className="break"></div>
           <div >
