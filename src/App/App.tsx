@@ -7,12 +7,13 @@ import { Todo, Counter } from "../types/todoTypes"
 interface AppPropType {
 	todos: Todo[];
   counter: Counter;
+  currentFilter: string;
   onAddTodo: Function;
   onToggle: Function;
   onFilter: Function;
 }
 
-const App: React.FC<AppPropType> = ({ todos, counter, onAddTodo, onToggle, onFilter }) => {
+const App: React.FC<AppPropType> = ({ todos, counter, currentFilter, onAddTodo, onToggle, onFilter }) => {
 
   const [inputValue, setInputValue] = useState("");
 
@@ -46,9 +47,9 @@ const App: React.FC<AppPropType> = ({ todos, counter, onAddTodo, onToggle, onFil
         { validationMessage }
         <button onClick={() => addTodo()}>Добавить задачу</button>
         |
-        <button onClick={() => filter("SHOW_ALL")}>Все</button>
-        <button onClick={() => filter("SHOW_COMPLETED")}>Выполенные { counter.completedCount }</button>
-        <button onClick={() => filter("SHOW_INCOMPLETED")}>Не выполненные { counter.incompletedCount }</button>
+        <button style={{ color: "SHOW_ALL" === currentFilter ? "blue" : "black"}} onClick={() => filter("SHOW_ALL")}>Все</button>
+        <button style={{ color: "SHOW_COMPLETED" === currentFilter ? "blue" : "black"}} onClick={() => filter("SHOW_COMPLETED")}>Выполенные { counter.completedCount }</button>
+        <button style={{ color: "SHOW_INCOMPLETED" === currentFilter ? "blue" : "black"}} onClick={() => filter("SHOW_INCOMPLETED")}>Не выполненные { counter.incompletedCount }</button>
         <div>
           {
             todos.map((elem: Todo) => { return <p> <span onClick={() => toggle(elem.id)}>{elem.text} {elem.completed ? "Выполено" : "Не выполнено"}</span></p> })
@@ -82,7 +83,8 @@ const App: React.FC<AppPropType> = ({ todos, counter, onAddTodo, onToggle, onFil
   const mapStateToProps = (state: any) => {    
     return {
       todos: getVisibleTodos(state.todos, state.filter),
-      counter: getCounter(state.todos)
+      counter: getCounter(state.todos),
+      currentFilter: state.filter
     };
   };
 
