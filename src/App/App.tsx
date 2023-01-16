@@ -17,6 +17,7 @@ const App: React.FC<AppPropType> = ({ todos, onAddTodo, onToggle, onFilter }) =>
 
   const addTodo = () => {
 		onAddTodo(inputValue);
+    setInputValue("");
 	};
 
   const toggle = (id: number) => {
@@ -34,7 +35,7 @@ const App: React.FC<AppPropType> = ({ todos, onAddTodo, onToggle, onFilter }) =>
 
     return (
       <div className="App">
-        <input type={"text"} onChange={ handleInputChange }></input>
+        <input type={"text"} value= { inputValue } onChange={ handleInputChange }></input>
         <button onClick={() => addTodo()}>Добавить задачу</button>
         |
         <button onClick={() => filter("SHOW_ALL")}>Все</button>
@@ -50,7 +51,6 @@ const App: React.FC<AppPropType> = ({ todos, onAddTodo, onToggle, onFilter }) =>
   }
 
   const getVisibleTodos = (todos: Todo[] = [], filter: string) => {
-    debugger;
     switch (filter) {
       case "SHOW_ALL":
         return todos
